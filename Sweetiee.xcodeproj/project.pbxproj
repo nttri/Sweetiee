@@ -12,6 +12,7 @@
 		22166ABC280C4EA2000CCA28 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22166ABB280C4EA2000CCA28 /* Assets.xcassets */; };
 		22166ABF280C4EA2000CCA28 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22166ABD280C4EA2000CCA28 /* LaunchScreen.storyboard */; };
 		229D03F8280F116C004C6F15 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229D03F7280F116C004C6F15 /* HomeViewController.swift */; };
+		229D03FD280F1B28004C6F15 /* background.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 229D03FC280F1B27004C6F15 /* background.mp4 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		22166ABE280C4EA2000CCA28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		22166AC0280C4EA2000CCA28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		229D03F7280F116C004C6F15 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		229D03FC280F1B27004C6F15 /* background.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = background.mp4; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +56,23 @@
 		22166AB1280C4E9E000CCA28 /* Sweetiee */ = {
 			isa = PBXGroup;
 			children = (
+				229D03FB280F1752004C6F15 /* Resources */,
 				22166AB2280C4E9E000CCA28 /* AppDelegate.swift */,
 				22166AB4280C4E9E000CCA28 /* SceneDelegate.swift */,
 				229D03F7280F116C004C6F15 /* HomeViewController.swift */,
-				22166ABB280C4EA2000CCA28 /* Assets.xcassets */,
-				22166ABD280C4EA2000CCA28 /* LaunchScreen.storyboard */,
 				22166AC0280C4EA2000CCA28 /* Info.plist */,
 			);
 			path = Sweetiee;
+			sourceTree = "<group>";
+		};
+		229D03FB280F1752004C6F15 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				22166ABD280C4EA2000CCA28 /* LaunchScreen.storyboard */,
+				22166ABB280C4EA2000CCA28 /* Assets.xcassets */,
+				229D03FC280F1B27004C6F15 /* background.mp4 */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -122,6 +133,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				229D03FD280F1B28004C6F15 /* background.mp4 in Resources */,
 				22166ABF280C4EA2000CCA28 /* LaunchScreen.storyboard in Resources */,
 				22166ABC280C4EA2000CCA28 /* Assets.xcassets in Resources */,
 			);
@@ -204,7 +216,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -258,7 +270,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -280,6 +292,8 @@
 				INFOPLIST_FILE = Sweetiee/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -291,7 +305,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -307,6 +321,8 @@
 				INFOPLIST_FILE = Sweetiee/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -318,7 +334,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
