@@ -8,24 +8,87 @@
 import UIKit
 import AVFoundation
 
+fileprivate let screenWidth = UIScreen.main.bounds.width
+
 final class HomeViewController: UIViewController {
     
     private var player: AVPlayer!
+    private var circleView: UIView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        let pulse = PulseAnimation(numberOfPulse: Float.infinity, radius: screenWidth*0.3, postion: circleView.center)
+        pulse.animationDuration = 1.0
+        pulse.backgroundColor = #colorLiteral(red: 0.5725490451, green: 0, blue: 0.2313725501, alpha: 1)
+        view.layer.insertSublayer(pulse, below: circleView.layer)
+        
+        let pulse2 = PulseAnimation(numberOfPulse: Float.infinity, radius: screenWidth*0.4, postion: circleView.center)
+        pulse2.animationDuration = 1.5
+        pulse2.backgroundColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
+        view.layer.insertSublayer(pulse2, below: circleView.layer)
+        
+        let pulse3 = PulseAnimation(numberOfPulse: Float.infinity, radius: screenWidth*0.5, postion: circleView.center)
+        pulse3.animationDuration = 2.0
+        pulse3.backgroundColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
+        view.layer.insertSublayer(pulse3, below: circleView.layer)
+    }
+    
     private func setupUI() {
         setupBackgroundVideo()
         setupLightViewEffect()
         setupCoupleInfo()
+        setupPersonalInfo()
     }
     
     private func setupCoupleInfo() {
         let safeArea = view.safeAreaLayoutGuide
-        let screenWidth = UIScreen.main.bounds.width
+        let roundSize = screenWidth * 0.65
+        
+        circleView = UIView()
+        circleView.layer.cornerRadius = roundSize/2
+        view.addSubview(circleView)
+        circleView.translatesAutoresizingMaskIntoConstraints = false
+        circleView.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor).isActive = true
+        circleView.centerYAnchor.constraint(equalTo: safeArea.centerYAnchor, constant: -130).isActive = true
+        circleView.widthAnchor.constraint(equalToConstant: roundSize).isActive = true
+        circleView.heightAnchor.constraint(equalToConstant: roundSize).isActive = true
+        
+        let daysLbl = UILabel()
+        let startDay = Date.from(year: 2022, month: 2, day: 14)
+        daysLbl.text = "\(calculateDays(from: startDay))"
+        daysLbl.font = .rounded(ofSize: 64, weight: .bold)
+        daysLbl.textColor = .white
+        circleView.addSubview(daysLbl)
+        daysLbl.translatesAutoresizingMaskIntoConstraints = false
+        daysLbl.centerXAnchor.constraint(equalTo: circleView.centerXAnchor).isActive = true
+        daysLbl.centerYAnchor.constraint(equalTo: circleView.centerYAnchor).isActive = true
+        
+        let coupleEmojiLbl = UILabel()
+        coupleEmojiLbl.text = "👩🏻‍❤️‍👨🏻"
+        coupleEmojiLbl.font = .rounded(ofSize: 32, weight: .semibold)
+        circleView.addSubview(coupleEmojiLbl)
+        coupleEmojiLbl.translatesAutoresizingMaskIntoConstraints = false
+        coupleEmojiLbl.centerXAnchor.constraint(equalTo: circleView.centerXAnchor).isActive = true
+        coupleEmojiLbl.bottomAnchor.constraint(equalTo: daysLbl.topAnchor).isActive = true
+        
+        let daysTogetherLbl = UILabel()
+        daysTogetherLbl.text = "days"
+        daysTogetherLbl.font = .rounded(ofSize: 22, weight: .semibold)
+        daysTogetherLbl.textColor = .white
+        circleView.addSubview(daysTogetherLbl)
+        daysTogetherLbl.translatesAutoresizingMaskIntoConstraints = false
+        daysTogetherLbl.centerXAnchor.constraint(equalTo: circleView.centerXAnchor).isActive = true
+        daysTogetherLbl.topAnchor.constraint(equalTo: daysLbl.bottomAnchor).isActive = true
+    }
+    
+    private func setupPersonalInfo() {
+        let safeArea = view.safeAreaLayoutGuide
         let avaSize = (screenWidth/2) * 0.65
         
         //boy
@@ -121,6 +184,14 @@ final class HomeViewController: UIViewController {
         let ageComponents = calendar.dateComponents([.year], from: birthday, to: now)
         let age = ageComponents.year ?? 0
         return age
+    }
+    
+    private func calculateDays(from birthday: Date) -> Int {
+        let now = Date()
+        let calendar = Calendar.current
+        let dateComponents = calendar.dateComponents([.day], from: birthday, to: now)
+        let days = dateComponents.day ?? 0
+        return days
     }
     
     private func setupLightViewEffect() {

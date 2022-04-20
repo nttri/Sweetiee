@@ -13,6 +13,7 @@
 		22166ABF280C4EA2000CCA28 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22166ABD280C4EA2000CCA28 /* LaunchScreen.storyboard */; };
 		229D03F8280F116C004C6F15 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229D03F7280F116C004C6F15 /* HomeViewController.swift */; };
 		229D03FD280F1B28004C6F15 /* background.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 229D03FC280F1B27004C6F15 /* background.mp4 */; };
+		229D03FF2810553A004C6F15 /* PulseAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229D03FE2810553A004C6F15 /* PulseAnimation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		22166AC0280C4EA2000CCA28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		229D03F7280F116C004C6F15 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		229D03FC280F1B27004C6F15 /* background.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = background.mp4; sourceTree = "<group>"; };
+		229D03FE2810553A004C6F15 /* PulseAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulseAnimation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				22166AB2280C4E9E000CCA28 /* AppDelegate.swift */,
 				22166AB4280C4E9E000CCA28 /* SceneDelegate.swift */,
 				229D03F7280F116C004C6F15 /* HomeViewController.swift */,
+				229D03FE2810553A004C6F15 /* PulseAnimation.swift */,
 				22166AC0280C4EA2000CCA28 /* Info.plist */,
 			);
 			path = Sweetiee;
@@ -146,6 +149,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				229D03FF2810553A004C6F15 /* PulseAnimation.swift in Sources */,
 				22166AB3280C4E9E000CCA28 /* AppDelegate.swift in Sources */,
 				22166AB5280C4E9E000CCA28 /* SceneDelegate.swift in Sources */,
 				229D03F8280F116C004C6F15 /* HomeViewController.swift in Sources */,
