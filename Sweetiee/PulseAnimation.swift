@@ -44,7 +44,7 @@ class PulseAnimation: CALayer {
     
     func scaleAnimation() -> CABasicAnimation {
         let scaleAnimaton = CABasicAnimation(keyPath: "transform.scale.xy")
-        scaleAnimaton.fromValue = NSNumber(value: 0.7)
+        scaleAnimaton.fromValue = NSNumber(value: 0.2)
         scaleAnimaton.toValue = NSNumber(value: 1)
         scaleAnimaton.duration = animationDuration
         return scaleAnimaton
