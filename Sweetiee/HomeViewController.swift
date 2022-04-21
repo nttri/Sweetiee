@@ -111,16 +111,16 @@ final class HomeViewController: UIViewController {
         boyNameLbl.topAnchor.constraint(equalTo: boyImgView.bottomAnchor, constant: 10).isActive = true
         boyNameLbl.centerXAnchor.constraint(equalTo: boyImgView.centerXAnchor).isActive = true
         
-        let boyAgeLbl = UILabel()
-        let boyBirthday = Date.from(year: 1997, month: 2, day: 3)
-        boyAgeLbl.text = "\(calculateAge(from: boyBirthday))"
-        boyAgeLbl.font = .rounded(ofSize: 18, weight: .semibold)
-        boyAgeLbl.textColor = .systemBlue
-        boyAgeLbl.addTextOutline(usingColor: .white, outlineWidth: 6)
-        boyView.addSubview(boyAgeLbl)
-        boyAgeLbl.translatesAutoresizingMaskIntoConstraints = false
-        boyAgeLbl.topAnchor.constraint(equalTo: boyNameLbl.bottomAnchor, constant: 6).isActive = true
-        boyAgeLbl.centerXAnchor.constraint(equalTo: boyImgView.centerXAnchor).isActive = true
+        let boyZodiac = UIButton()
+        boyZodiac.setTitle("♒️", for: .normal)
+        boyZodiac.backgroundColor = .white
+        boyZodiac.layer.cornerRadius = 18
+        boyView.addSubview(boyZodiac)
+        boyZodiac.translatesAutoresizingMaskIntoConstraints = false
+        boyZodiac.topAnchor.constraint(equalTo: boyNameLbl.bottomAnchor, constant: 12).isActive = true
+        boyZodiac.centerXAnchor.constraint(equalTo: boyView.centerXAnchor).isActive = true
+        boyZodiac.widthAnchor.constraint(equalToConstant: 36).isActive = true
+        boyZodiac.heightAnchor.constraint(equalToConstant: 36).isActive = true
         
         //girl
         let girlView = UIView()
@@ -154,16 +154,16 @@ final class HomeViewController: UIViewController {
         girlNameLbl.topAnchor.constraint(equalTo: girlImgView.bottomAnchor, constant: 10).isActive = true
         girlNameLbl.centerXAnchor.constraint(equalTo: girlImgView.centerXAnchor).isActive = true
         
-        let girlAgeLbl = UILabel()
-        let girlBirthday = Date.from(year: 1998, month: 1, day: 17)
-        girlAgeLbl.text = "\(calculateAge(from: girlBirthday))"
-        girlAgeLbl.font = .rounded(ofSize: 18, weight: .semibold)
-        girlAgeLbl.textColor = .systemPink
-        girlAgeLbl.addTextOutline(usingColor: .white, outlineWidth: 6)
-        girlView.addSubview(girlAgeLbl)
-        girlAgeLbl.translatesAutoresizingMaskIntoConstraints = false
-        girlAgeLbl.topAnchor.constraint(equalTo: girlNameLbl.bottomAnchor, constant: 6).isActive = true
-        girlAgeLbl.centerXAnchor.constraint(equalTo: girlImgView.centerXAnchor).isActive = true
+        let girlZodiac = UIButton()
+        girlZodiac.setTitle("♑️", for: .normal)
+        girlZodiac.backgroundColor = .white
+        girlZodiac.layer.cornerRadius = 18
+        girlView.addSubview(girlZodiac)
+        girlZodiac.translatesAutoresizingMaskIntoConstraints = false
+        girlZodiac.topAnchor.constraint(equalTo: girlNameLbl.bottomAnchor, constant: 12).isActive = true
+        girlZodiac.centerXAnchor.constraint(equalTo: girlView.centerXAnchor).isActive = true
+        girlZodiac.widthAnchor.constraint(equalToConstant: 36).isActive = true
+        girlZodiac.heightAnchor.constraint(equalToConstant: 36).isActive = true
     }
     
     private func setupLightViewEffect() {
