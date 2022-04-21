@@ -28,15 +28,20 @@ final class HomeViewController: UIViewController {
         pulse.backgroundColor = #colorLiteral(red: 0.5725490451, green: 0, blue: 0.2313725501, alpha: 1)
         view.layer.insertSublayer(pulse, below: circleView.layer)
         
-        let pulse2 = PulseAnimation(numberOfPulse: Float.infinity, radius: screenWidth*0.4, postion: circleView.center)
-        pulse2.animationDuration = 1.5
+        let pulse2 = PulseAnimation(numberOfPulse: Float.infinity, radius: screenWidth*0.37, postion: circleView.center)
+        pulse2.animationDuration = 1.3
         pulse2.backgroundColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
         view.layer.insertSublayer(pulse2, below: circleView.layer)
         
-        let pulse3 = PulseAnimation(numberOfPulse: Float.infinity, radius: screenWidth*0.5, postion: circleView.center)
-        pulse3.animationDuration = 2.0
-        pulse3.backgroundColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
+        let pulse3 = PulseAnimation(numberOfPulse: Float.infinity, radius: screenWidth*0.44, postion: circleView.center)
+        pulse3.animationDuration = 1.6
+        pulse3.backgroundColor = #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1)
         view.layer.insertSublayer(pulse3, below: circleView.layer)
+        
+        let pulse4 = PulseAnimation(numberOfPulse: Float.infinity, radius: screenWidth*0.5, postion: circleView.center)
+        pulse4.animationDuration = 1.9
+        pulse4.backgroundColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
+        view.layer.insertSublayer(pulse4, below: circleView.layer)
     }
     
     private func setupUI() {
