@@ -22,6 +22,7 @@ final class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        setupAppEvents()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -326,5 +327,38 @@ final class HomeViewController: UIViewController {
     
     @objc private func playerDidReachEnd() {
         player.seek(to: .zero)
+    }
+    
+    
+    //MARK: App events
+    private func setupAppEvents() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(willDeactivateNotification),
+                                               name: UIScene.willDeactivateNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(willEnterForegroundNotification),
+                                               name: UIScene.willEnterForegroundNotification,
+                                               object: nil)
+    }
+    
+    @objc func willDeactivateNotification() {
+        let tracks = self.player.currentItem!.tracks
+        for track in tracks {
+            if track.assetTrack!.hasMediaCharacteristic(AVMediaCharacteristic.visual) {
+                // Disable the track.
+                track.isEnabled = false
+            }
+        }
+    }
+        
+    @objc func willEnterForegroundNotification() {
+        let tracks = self.player.currentItem!.tracks
+        for track in tracks {
+            if track.assetTrack!.hasMediaCharacteristic(AVMediaCharacteristic.visual) {
+                // Enable the track.
+                track.isEnabled = true
+            }
+        }
     }
 }
