@@ -333,29 +333,29 @@ final class HomeViewController: UIViewController {
     //MARK: App events
     private func setupAppEvents() {
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(willDeactivateNotification),
-                                               name: UIScene.willDeactivateNotification,
+                                               selector: #selector(playPlayer),
+                                               name: UIScene.willEnterForegroundNotification,
                                                object: nil)
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(willEnterForegroundNotification),
-                                               name: UIScene.willEnterForegroundNotification,
+                                               selector: #selector(pausePlayer),
+                                               name: UIScene.didEnterBackgroundNotification,
                                                object: nil)
     }
     
-    @objc func willDeactivateNotification() {
+    @objc func pausePlayer() {
         let tracks = self.player.currentItem!.tracks
         for track in tracks {
-            if track.assetTrack!.hasMediaCharacteristic(AVMediaCharacteristic.visual) {
+            if track.assetTrack!.hasMediaCharacteristic(AVMediaCharacteristic.visual) && track.isEnabled {
                 // Disable the track.
                 track.isEnabled = false
             }
         }
     }
         
-    @objc func willEnterForegroundNotification() {
+    @objc func playPlayer() {
         let tracks = self.player.currentItem!.tracks
         for track in tracks {
-            if track.assetTrack!.hasMediaCharacteristic(AVMediaCharacteristic.visual) {
+            if track.assetTrack!.hasMediaCharacteristic(AVMediaCharacteristic.visual) && !track.isEnabled {
                 // Enable the track.
                 track.isEnabled = true
             }
