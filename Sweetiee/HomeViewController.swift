@@ -14,6 +14,10 @@ final class HomeViewController: UIViewController {
     
     private var player: AVPlayer!
     private var circleView: UIView!
+    private var boyImgView: UIImageView!
+    private var girlImgView: UIImageView!
+    private var heartImgView: UIImageView!
+    private var kissBtn: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +36,7 @@ final class HomeViewController: UIViewController {
         setupLightViewEffect()
         setupCoupleInfo()
         setupPersonalInfo()
+        setupKissButton()
     }
     
     private func setupCoupleInfo() {
@@ -89,7 +94,7 @@ final class HomeViewController: UIViewController {
         boyView.trailingAnchor.constraint(equalTo: safeArea.centerXAnchor).isActive = true
         
         let boyImg = UIImage(named: "him.jpg")
-        let boyImgView = UIImageView(image: boyImg)
+        boyImgView = UIImageView(image: boyImg)
         boyImgView.layer.cornerRadius = avaSize/2
         boyImgView.clipsToBounds = true
         boyImgView.layer.borderWidth = 6
@@ -132,7 +137,7 @@ final class HomeViewController: UIViewController {
         girlView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor).isActive = true
         
         let girlImg = UIImage(named: "her.jpg")
-        let girlImgView = UIImageView(image: girlImg)
+        girlImgView = UIImageView(image: girlImg)
         girlImgView.layer.cornerRadius = avaSize/2
         girlImgView.clipsToBounds = true
         girlImgView.layer.borderWidth = 6
@@ -164,6 +169,16 @@ final class HomeViewController: UIViewController {
         girlZodiac.centerXAnchor.constraint(equalTo: girlView.centerXAnchor).isActive = true
         girlZodiac.widthAnchor.constraint(equalToConstant: 36).isActive = true
         girlZodiac.heightAnchor.constraint(equalToConstant: 36).isActive = true
+        
+        //heart image view
+        let heartImg = UIImage(systemName: "heart.fill")
+        heartImgView = UIImageView(image: heartImg)
+        heartImgView.tintColor = .red
+        view.addSubview(heartImgView)
+        heartImgView.translatesAutoresizingMaskIntoConstraints = false
+        heartImgView.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor).isActive = true
+        heartImgView.centerYAnchor.constraint(equalTo: boyImgView.centerYAnchor).isActive = true
+        heartImgView.frame.size = CGSize(width: 60, height: 60)
     }
     
     private func setupLightViewEffect() {
@@ -172,6 +187,27 @@ final class HomeViewController: UIViewController {
         lightView.backgroundColor = .white
         lightView.alpha = 0.3
         view.addSubview(lightView)
+    }
+    
+    private func setupKissButton() {
+        let safeArea = view.safeAreaLayoutGuide
+        
+        kissBtn = UIButton()
+        kissBtn.setTitle("💋", for: .normal)
+        kissBtn.backgroundColor = .white
+        kissBtn.layer.cornerRadius = 15
+        kissBtn.addTarget(self, action: #selector(kissBtnTapped), for: .touchUpInside)
+        view.addSubview(kissBtn)
+        kissBtn.translatesAutoresizingMaskIntoConstraints = false
+        kissBtn.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor).isActive = true
+        kissBtn.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -64).isActive = true
+        kissBtn.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        kissBtn.heightAnchor.constraint(equalToConstant: 32).isActive = true
+    }
+    
+    @objc private func kissBtnTapped() {
+        kissBtn.isHidden = true
+        startKissAnimation()
     }
     
     
@@ -217,7 +253,51 @@ final class HomeViewController: UIViewController {
     }
     
     private func startKissAnimation() {
+        let avaSize = (screenWidth/2) * 0.65
+        let moveLen = screenWidth/4 - avaSize/2
         
+        //couple come in
+        UIView.animate(withDuration: 2,
+                       delay: 0,
+                       usingSpringWithDamping: 1,
+                       initialSpringVelocity: 0.3,
+                       options: .beginFromCurrentState,
+                       animations: {
+                            self.boyImgView.center.x += moveLen
+                            self.girlImgView.center.x -= moveLen
+                       }, completion: { _ in
+                           self.heartImgView.isHidden = false
+                       })
+        
+        //heart fly animation
+        UIView.animate(withDuration: 3,
+                       delay: 2,
+                       usingSpringWithDamping: 1,
+                       initialSpringVelocity: 0.2,
+                       options: .beginFromCurrentState,
+                       animations: {
+                            self.heartImgView.transform = CGAffineTransform.identity.scaledBy(x: 18, y: 18)
+                            self.heartImgView.center.y -= 300
+                            self.heartImgView.alpha = 0
+                        }, completion: { _ in
+                            self.heartImgView.transform = CGAffineTransform.identity
+                            self.heartImgView.center.y += 300
+                            self.heartImgView.alpha = 1
+                            self.kissBtn.isHidden = false
+                        })
+        
+        //couple come out
+        UIView.animate(withDuration: 3,
+                       delay: 2,
+                       usingSpringWithDamping: 0.5,
+                       initialSpringVelocity: 10,
+                       options: .beginFromCurrentState,
+                       animations: {
+                            self.boyImgView.center.x -= moveLen
+                            self.girlImgView.center.x += moveLen
+                       }, completion: {_ in
+                           self.kissBtn.isHidden = false
+                       })
     }
 
     
