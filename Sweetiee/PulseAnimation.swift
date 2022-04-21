@@ -30,7 +30,7 @@ class PulseAnimation: CALayer {
         self.radius = radius
         self.numebrOfPulse = numberOfPulse
         self.position = postion
-        
+        self.animationGroup.isRemovedOnCompletion = false
         self.bounds = CGRect(x: 0, y: 0, width: radius*2, height: radius*2)
         self.cornerRadius = radius
         
