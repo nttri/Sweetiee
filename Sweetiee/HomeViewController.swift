@@ -18,9 +18,10 @@ final class HomeViewController: UIViewController {
     private var girlImgView: UIImageView!
     private var heartImgView: UIImageView!
     private var kissBtn: UIButton!
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        AppOrientationUtility.lockOrientation(.portrait, andRotateTo: .portrait)
         setupUI()
         setupAppEvents()
     }
@@ -184,7 +185,7 @@ final class HomeViewController: UIViewController {
     
     private func setupLightViewEffect() {
         let lightView = UIView()
-        lightView.frame = view.frame
+        lightView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         lightView.backgroundColor = .white
         lightView.alpha = 0.3
         view.addSubview(lightView)
@@ -312,7 +313,7 @@ final class HomeViewController: UIViewController {
         player.actionAtItemEnd = .none
         
         let layer = AVPlayerLayer(player: player)
-        layer.frame = view.frame
+        layer.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         layer.videoGravity = .resizeAspectFill
         view.layer.insertSublayer(layer, at: 0)
         
@@ -322,7 +323,6 @@ final class HomeViewController: UIViewController {
                                                object: player.currentItem)
         player.seek(to: .zero)
         player.play()
-        player.isMuted = true
     }
     
     @objc private func playerDidReachEnd() {
