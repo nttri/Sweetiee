@@ -343,22 +343,10 @@ final class HomeViewController: UIViewController {
     }
     
     @objc func pausePlayer() {
-        let tracks = self.player.currentItem!.tracks
-        for track in tracks {
-            if track.assetTrack!.hasMediaCharacteristic(AVMediaCharacteristic.visual) && track.isEnabled {
-                // Disable the track.
-                track.isEnabled = false
-            }
-        }
+        player.pause()
     }
         
     @objc func playPlayer() {
-        let tracks = self.player.currentItem!.tracks
-        for track in tracks {
-            if track.assetTrack!.hasMediaCharacteristic(AVMediaCharacteristic.visual) && !track.isEnabled {
-                // Enable the track.
-                track.isEnabled = true
-            }
-        }
+        player.play()
     }
 }
