@@ -21,6 +21,13 @@ final class HomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback)
+        } catch {
+            print(error.localizedDescription)
+        }
+        
         AppOrientationUtility.lockOrientation(.portrait, andRotateTo: .portrait)
         setupUI()
         setupAppEvents()
